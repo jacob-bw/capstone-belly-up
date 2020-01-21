@@ -1,6 +1,12 @@
 import React from 'react';
+
 import logo from './logo.svg';
+
 import './App.scss';
+
+import wordFunc from '../helpers/data/wordData';
+
+wordFunc.getRandomWord().then(console.log);
 
 function App() {
   return (
@@ -18,7 +24,7 @@ function App() {
         >
           Learn React
         </a>
-        <button class="btn btn-warning">Bootstrap Button</button>
+      <button className="btn btn-warning"></button>
       </header>
     </div>
   );
