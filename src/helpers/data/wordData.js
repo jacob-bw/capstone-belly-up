@@ -3,30 +3,28 @@ import wordKey from '../apiKeys.json';
 
 const key = wordKey.wordKey;
 
+const getWord = () => axios({
+  url: 'https://wordsapiv1.p.rapidapi.com/words/?random=true',
+  method: 'GET',
+  headers: {
+    'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com',
+    'x-rapidapi-key': `${key}`,
+  },
+});
+
+
 const getRandomWord = () => new Promise((resolve, reject) => {
-  axios({
-    url: 'https://wordsapiv1.p.rapidapi.com/words/?random=true',
-    method: 'GET',
-    headers: {
-      'x-rapidapi-host': 'wordsapiv1.p.rapidapi.com',
-      'x-rapidapi-key': `${key}`,
-    },
-  })
+  getWord()
     .then((response) => {
       const baseWord = response.data.word;
-      const CheckForO = () => {
-        console.log('baseword test', baseWord);
-        const str = `${baseWord}`;
-        const validate = str.toUpperCase();
-        const yep = validate.includes('O');
-        if (yep === false) {
-          console.log('NOPE. Try again.');
-        } else {
-          console.log('yeah it works, now figure out how to refire the axios call');
-        }
+      const str = `${baseWord}`;
+      const validate = str.toUpperCase();
+      const hasO = validate.includes('O');
+      if (hasO === true) {
         resolve(baseWord);
-      };
-      CheckForO();
+      } else {
+        resolve(getRandomWord());
+      }
     })
     .catch((errorFromGetRandomWord) => {
       reject(errorFromGetRandomWord);
