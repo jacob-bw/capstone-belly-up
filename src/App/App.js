@@ -1,33 +1,60 @@
 import React from 'react';
-
-import logo from './logo.svg';
-
+// eslint-disable-next-line object-curly-newline
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import './App.scss';
 
+
+import Auth from '../components/pages/Auth/Auth';
+import firebaseConnection from '../helpers/data/authData';
 import wordFunc from '../helpers/data/wordData';
+
+const PublicRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }}/>);
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
+
+// const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+//   const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/auth', state: { from: props.location } }}/>);
+//   return <Route {...rest} render={(props) => routeChecker(props)} />;
+// };
+
+firebaseConnection();
 
 wordFunc.getRandomWord().then(console.log);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      <button className="btn btn-warning">Burp</button>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    authed: false,
+  }
+
+  componentDidMount() {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ authed: true });
+      } else {
+        this.setState({ authed: false });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
+  }
+
+  render() {
+    const { authed } = this.state;
+    return (
+      <div className="App">
+        <Router>
+          <Switch>
+            <PublicRoute path="/auth" exact component={Auth} authed={authed}/>
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;
