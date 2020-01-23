@@ -48,8 +48,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
+          <Auth authed={authed}/>
           <Switch>
             <PublicRoute path="/auth" exact component={Auth} authed={authed}/>
+            {/* <PrivateRoute path="/auth" exact component={Auth} authed={authed}/> */}
           </Switch>
         </Router>
       </div>

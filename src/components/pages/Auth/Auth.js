@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+// import fab from '@fortawesome/free-solid-svg-icons';
 
 import './Auth.scss';
 
@@ -15,7 +16,7 @@ class Auth extends React.Component {
     return (
       <div className="Auth">
         <h1>Auth Page</h1>
-        <button className="btn btn-danger" oncClick={this.loginClickEvent}><i class="fab fa-google-plus-square"></i></button>
+        <button className="btn btn-danger" onClick={this.loginClickEvent}>login</button>
       </div>
     );
   }
