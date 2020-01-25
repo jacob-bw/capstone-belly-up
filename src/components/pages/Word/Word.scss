@@ -5,8 +5,11 @@ margin: 10px;
  .card {
   width: 300px;
   justify-content: center;
-   .card-btn {
-     margin: 5px;
+  .card-img-top {
+      margin-top: 10px;
+    }
+  .card-btn {
+    margin: 5px;
     }
   }
 }
