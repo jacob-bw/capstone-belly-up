@@ -23,7 +23,7 @@ const getRandomWord = () => new Promise((resolve, reject) => {
       if (hasO === true) {
         resolve(baseWord);
       } else {
-        resolve(getRandomWord());
+        getRandomWord();
       }
     })
     .catch((errorFromGetRandomWord) => {
