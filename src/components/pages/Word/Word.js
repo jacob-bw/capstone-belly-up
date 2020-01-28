@@ -12,13 +12,43 @@ class TattooWord extends React.Component {
     randomWord.getRandomWord()
       .then((response) => {
         console.log('the response is ', response);
+        const wordMidpoint = response.length / 2;
+        console.log('the middle of the word has an index of', wordMidpoint);
+        const howManyOs = response.match(/o/gi).length;
+        if (howManyOs > 1) {
+          const responseArr = response.split('');
+          console.log(responseArr);
+          const newArr = [];
+          for (let i = response.indexOf('o');
+            i >= 0;
+            i = response.indexOf('o', i + 1)) {
+            newArr.push(i);
+          }
+          console.log('this is the array of indexes', newArr);
+        } else {
+          console.log('party');
+        }
+        // use Math.abs to compare i[x] + wordMidpoint)
+        // whichever absolute value is lowest, use that as the breakpoint for the subarray
+
+
+        // const firstO = response.indexOf('o');
+        // const lastO = response.lastIndexOf('o');
+        // console.log('the first O has an index of', firstO);
+        // console.log('the last O has an index of', lastO);
         const bellyScript = response.split('o');
-        console.log(bellyScript[0], 'is the first half');
-        console.log(bellyScript[1], 'is the second half');
+        // if (howManyOs > 1) {
+        //   console.log('there are ', howManyOs, 'Os in this word');
+        //   const oSplit = response.subarray(firstO);
+        //   console.log(oSplit);
+        // } else {
+        //   console.log('party');
+        // }
         this.setState({ word: bellyScript });
       })
       .catch((err) => console.error('error from splitWord', err));
   }
+
 
   componentDidMount() {
     this.splitWord();
@@ -28,7 +58,6 @@ class TattooWord extends React.Component {
     const bellyWord = this.state.word;
     const halfOne = bellyWord[0];
     const halfTwo = bellyWord[1];
-    console.log('bellyword is:', bellyWord);
     return (
       <div className="wordCard">
         <div className="card col-md-4">
