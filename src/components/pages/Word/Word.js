@@ -16,22 +16,32 @@ class TattooWord extends React.Component {
         console.log('the middle of the word has an index of', wordMidpoint);
         const howManyOs = response.match(/o/gi).length;
         if (howManyOs > 1) {
-          const responseArr = response.split('');
-          console.log(responseArr);
           const newArr = [];
           for (let i = response.indexOf('o');
             i >= 0;
             i = response.indexOf('o', i + 1)) {
             newArr.push(i);
           }
+          // for loop over newArr
+          // for each item, Math.abs(i[x] - wordMidPoint);
+          // then, form ANOTHER new array out of all the differences,
+          // theen sort new array,
+          // THEN get lowest indexed difference
+          // compare lowest indexed difference to original index
+          // finally, split into subarrays at original index point
           console.log('this is the array of indexes', newArr);
+          const indexArr = [];
+          console.log(newArr.length);
+          const setIndexArrLength = newArr.length;
+          console.log(setIndexArrLength);
+          // for (let j = 0; j < newArr.length; j + 1) {
+          //   const indexDiff = Math.abs(newArr[j] - wordMidpoint);
+          //   console.log('this is the difference between the O index and indexDiff:', indexDiff);
+          // }
+          console.log('this is the index length array', indexArr);
         } else {
-          console.log('party');
+          console.log('only one "O", loop function not applicable');
         }
-        // use Math.abs to compare i[x] + wordMidpoint)
-        // whichever absolute value is lowest, use that as the breakpoint for the subarray
-
-
         // const firstO = response.indexOf('o');
         // const lastO = response.lastIndexOf('o');
         // console.log('the first O has an index of', firstO);
