@@ -11,50 +11,24 @@ class TattooWord extends React.Component {
   splitWord = () => {
     randomWord.getRandomWord()
       .then((response) => {
-        console.log('the response is ', response);
+        console.log('the word being split is: ', response);
         const wordMidpoint = response.length / 2;
-        console.log('the middle of the word has an index of', wordMidpoint);
         const howManyOs = response.match(/o/gi).length;
         if (howManyOs > 1) {
           const newArr = [];
-          for (let i = response.indexOf('o');
-            i >= 0;
-            i = response.indexOf('o', i + 1)) {
+          const oIndexArray = [];
+          for (let i = response.indexOf('o'); i >= 0; i = response.indexOf('o', i + 1)) {
             newArr.push(i);
+            const closestO = Math.abs(i - wordMidpoint);
+            oIndexArray.push(closestO);
           }
-          // for loop over newArr
-          // for each item, Math.abs(i[x] - wordMidPoint);
-          // then, form ANOTHER new array out of all the differences,
-          // theen sort new array,
-          // THEN get lowest indexed difference
-          // compare lowest indexed difference to original index
-          // finally, split into subarrays at original index point
-          console.log('this is the array of indexes', newArr);
-          const indexArr = [];
-          console.log(newArr.length);
-          const setIndexArrLength = newArr.length;
-          console.log(setIndexArrLength);
-          // for (let j = 0; j < newArr.length; j + 1) {
-          //   const indexDiff = Math.abs(newArr[j] - wordMidpoint);
-          //   console.log('this is the difference between the O index and indexDiff:', indexDiff);
-          // }
-          console.log('this is the index length array', indexArr);
+          const lowestIndex = oIndexArray.indexOf(Math.min(...oIndexArray));
+          const bellyScript = [response.substring(0, newArr[lowestIndex]), response.substring(newArr[lowestIndex] + 1)];
+          this.setState({ word: bellyScript });
         } else {
-          console.log('only one "O", loop function not applicable');
+          const bellyScript = response.split('o');
+          this.setState({ word: bellyScript });
         }
-        // const firstO = response.indexOf('o');
-        // const lastO = response.lastIndexOf('o');
-        // console.log('the first O has an index of', firstO);
-        // console.log('the last O has an index of', lastO);
-        const bellyScript = response.split('o');
-        // if (howManyOs > 1) {
-        //   console.log('there are ', howManyOs, 'Os in this word');
-        //   const oSplit = response.subarray(firstO);
-        //   console.log(oSplit);
-        // } else {
-        //   console.log('party');
-        // }
-        this.setState({ word: bellyScript });
       })
       .catch((err) => console.error('error from splitWord', err));
   }
