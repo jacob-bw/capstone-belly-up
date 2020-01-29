@@ -1,0 +1,15 @@
+.wordCard {
+display: flex;
+justify-content: center;
+margin: 10px;
+ .card {
+  width: 300px;
+  justify-content: center;
+  .card-img-top {
+      margin-top: 10px;
+    }
+  .card-btn {
+    margin: 5px;
+    }
+  }
+}

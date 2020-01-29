@@ -8,12 +8,12 @@ import './App.scss';
 
 import Auth from '../components/pages/Auth/Auth';
 import firebaseConnection from '../helpers/data/authData';
-import wordFunc from '../helpers/data/wordData';
+import TattooWord from '../components/pages/Word/Word';
 
-const PublicRoute = ({ component: Component, authed, ...rest }) => {
-  const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }}/>);
-  return <Route {...rest} render={(props) => routeChecker(props)} />;
-};
+// const PublicRoute = ({ component: Component, authed, ...rest }) => {
+//   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }}/>);
+//   return <Route {...rest} render={(props) => routeChecker(props)} />;
+// };
 
 // const PrivateRoute = ({ component: Component, authed, ...rest }) => {
 //   const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/auth', state: { from: props.location } }}/>);
@@ -21,8 +21,6 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
 // };
 
 firebaseConnection();
-
-wordFunc.getRandomWord().then(console.log);
 
 class App extends React.Component {
   state = {
@@ -49,9 +47,11 @@ class App extends React.Component {
       <div className="App">
         <Router>
           <Auth authed={authed}/>
+          <TattooWord authed={authed}/>
           <Switch>
-            <PublicRoute path="/auth" exact component={Auth} authed={authed}/>
-            {/* <PrivateRoute path="/auth" exact component={Auth} authed={authed}/> */}
+            {/* <PublicRoute path="/home" exact component={Auth} authed={authed}/>
+            <TattooWord path="/" exact component={TattooWord} authed={authed}/>
+            <PrivateRoute path="/auth" exact component={Auth} authed={authed}/> */}
           </Switch>
         </Router>
       </div>

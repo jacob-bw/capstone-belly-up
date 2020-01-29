@@ -20,7 +20,9 @@ const getRandomWord = () => new Promise((resolve, reject) => {
       const str = `${baseWord}`;
       const validate = str.toUpperCase();
       const hasO = validate.includes('O');
-      if (hasO === true) {
+      const noSpace = validate.includes(' ');
+      const oneWord = validate.includes('-');
+      if (hasO === true && oneWord === false && noSpace === false) {
         resolve(baseWord);
       } else {
         resolve(getRandomWord());
