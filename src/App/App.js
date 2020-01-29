@@ -9,16 +9,17 @@ import './App.scss';
 import Auth from '../components/pages/Auth/Auth';
 import firebaseConnection from '../helpers/data/authData';
 import TattooWord from '../components/pages/Word/Word';
+import MyNav from '../components/shared/nav/nav';
 
-// const PublicRoute = ({ component: Component, authed, ...rest }) => {
-//   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }}/>);
-//   return <Route {...rest} render={(props) => routeChecker(props)} />;
-// };
+const PublicRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }}/>);
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
 
-// const PrivateRoute = ({ component: Component, authed, ...rest }) => {
-//   const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/auth', state: { from: props.location } }}/>);
-//   return <Route {...rest} render={(props) => routeChecker(props)} />;
-// };
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = (props) => (authed === true ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/auth', state: { from: props.location } }}/>);
+  return <Route {...rest} render={(props) => routeChecker(props)} />;
+};
 
 firebaseConnection();
 
@@ -46,12 +47,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <Router>
-          <Auth authed={authed}/>
-          <TattooWord authed={authed}/>
+          <MyNav authed={authed}/>
           <Switch>
-            {/* <PublicRoute path="/home" exact component={Auth} authed={authed}/>
+            <PublicRoute path="/home" exact component={Auth} authed={authed}/>
             <TattooWord path="/" exact component={TattooWord} authed={authed}/>
-            <PrivateRoute path="/auth" exact component={Auth} authed={authed}/> */}
+            <PrivateRoute path="/auth" exact component={Auth} authed={authed}/>
           </Switch>
         </Router>
       </div>
