@@ -1,6 +1,7 @@
 import React from 'react';
 import './Word.scss';
 
+
 import randomWord from '../../../helpers/data/wordData';
 
 class TattooWord extends React.Component {
@@ -44,13 +45,23 @@ class TattooWord extends React.Component {
     const halfTwo = bellyWord[1];
     return (
       <div className="wordCard">
-        <div className="card col-md-4">
-        <img className="card-img-top" src="https://media.giphy.com/media/oOX5qIDkzDjeo/giphy.gif" alt="test belly"/>
-        <div className="card-body">
-          <p>{ halfOne } "O" { halfTwo }</p>
-          {/* <button className="btn btn-dark card-btn" id="changeFont">Change Font</button>
+        <div className="card col-md-6">
+            <img className="card-img-top" src="https://i.imgur.com/djkkQVn.jpg" alt="test belly"/>
+            <div className="tattooScript" id="halfOne"><span>{ halfOne }</span></div>
+            <div className="tattooScript" id="halfTwo"><span>{ halfTwo }</span></div>
+        <div className="card-footer">
+          <div className="dropdown">
+            <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Choose Font
+            </button>
+            <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button className="dropdown-item" type="button" id="font1">font 1</button>
+              <button className="dropdown-item" type="button" id="font2">font 2</button>
+              <button className="dropdown-item" type="button" id="font3">font 3</button>
+            </div>
+          </div>
           <button className="btn btn-dark card-btn" id="saveTattoo">Save</button>
-          <button className="btn btn-dark card-btn" id="tryAgain">go again</button> */}
+          <button className="btn btn-dark card-btn" id="tryAgain">go again</button>
         </div>
       </div>
       </div>

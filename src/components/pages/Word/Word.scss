@@ -1,15 +1,38 @@
+@import '../../../styles/index.scss';
+
+
 .wordCard {
 display: flex;
 justify-content: center;
 margin: 10px;
- .card {
-  width: 300px;
+.card {
+  border-radius: 0px;
+  width: 500px;
   justify-content: center;
-  .card-img-top {
-      margin-top: 10px;
+  position: relative;
+  text-align: center;
+  padding: 2px;
+    .card-img-top {
+      z-index: 0;
+      border-radius: 0px;
     }
+    .tattooScript {
+      font-family: $font1;
+      z-index: 1;
+      #halfOne span {
+        position: absolute;
+        top: 50%;
+        left: 25%;
+      }
+      #halfTwo span {
+        position: absolute;
+        top: 50%;
+        right: 25%;
+      }
+    }
+
+  }
   .card-btn {
     margin: 5px;
     }
   }
-}
