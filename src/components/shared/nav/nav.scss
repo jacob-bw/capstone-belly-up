@@ -1,9 +1,15 @@
-.nav-item {
-  .svg {
-    height: 40px;
-    overflow: hidden;
-  }
-  .button {  
+.myNavbar {
+  height: 40px;
+  li {  
     margin: 3px;
+    .nav-item {
+      margin: 3px;
+      .svg-inline--fa {
+        font-size: 2rem;
+        margin: none;
+        border: none;
+        border-style: none;
+      }
+    }
   }
 }
