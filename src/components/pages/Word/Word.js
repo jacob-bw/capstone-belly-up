@@ -46,9 +46,11 @@ class TattooWord extends React.Component {
     return (
       <div className="wordCard">
         <div className="card col-md-6">
-            <img className="card-img-top" src="https://i.imgur.com/djkkQVn.jpg" alt="test belly"/>
+          <div className="tattoo-holder">
+            <img className="card-img-top" src="https://i.imgur.com/tUVzOw5.jpg" alt="test belly"/>
             <div className="tattooScript" id="halfOne"><span>{ halfOne }</span></div>
             <div className="tattooScript" id="halfTwo"><span>{ halfTwo }</span></div>
+          </div>
         <div className="card-footer">
           <div className="dropdown">
             <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
