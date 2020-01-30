@@ -1,18 +1,12 @@
 import React from 'react';
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
   UncontrolledDropdown,
-  Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -39,7 +33,7 @@ class MyNav extends React.Component {
     const buildNavbar = () => {
       if (authed) {
         return (
-          <div>
+          <div className="navbar-nav ml-auto">
             <Nav pills>
               <UncontrolledDropdown>
                 <DropdownToggle nav caret>
