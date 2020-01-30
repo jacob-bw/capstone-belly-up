@@ -24,10 +24,10 @@ margin: 10px;
       }
       #halfOne {
         position: absolute;
-        top: 32%;
+        top: 33%;
         right: 55%;
         text-align: right !important;
-        font-size: 2rem;
+        font-size: 2.2rem;
         // transform: translate(-50%, -50%);
         margin-right: 0% !important;
         span {
@@ -38,9 +38,9 @@ margin: 10px;
       #halfTwo {
         position: absolute;
         text-align: left !important;
-        top: 32%;
+        top: 33%;
         left: 56%;
-        font-size: 2rem;
+        font-size: 2.2rem;
         // transform: translate(-50%, -50%);
         margin-left: 0% !important;
         span {
@@ -51,7 +51,11 @@ margin: 10px;
       
 
     }
-  .card-btn {
-    margin: 5px;
+    .card-footer {
+      justify-content: space-around;
+      .card-btn {
+        margin: 5px;
+        font-family: $font1;
+      }
     }
   }

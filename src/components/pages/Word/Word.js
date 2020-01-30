@@ -53,7 +53,7 @@ class TattooWord extends React.Component {
           </div>
         <div className="card-footer">
           <div className="dropdown">
-            <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button className="btn btn-dark dropdown-toggle card-btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Choose Font
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -61,9 +61,9 @@ class TattooWord extends React.Component {
               <button className="dropdown-item" type="button" id="font2">font 2</button>
               <button className="dropdown-item" type="button" id="font3">font 3</button>
             </div>
-          </div>
           <button className="btn btn-dark card-btn" id="saveTattoo">Save</button>
           <button className="btn btn-dark card-btn" id="tryAgain">go again</button>
+          </div>
         </div>
       </div>
       </div>

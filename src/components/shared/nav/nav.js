@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons';
 
 class MyNav extends React.Component {
   static propTypes= {
@@ -21,7 +24,7 @@ class MyNav extends React.Component {
         return (
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/saved">BookImg</Link>
+              <Link className="nav-link saved" to="/saved"><FontAwesomeIcon icon={faBook}/></Link>
             </li>
             <li className="nav-item">
               <div className="dropdown">
@@ -36,7 +39,7 @@ class MyNav extends React.Component {
               </div>
             </li>
             <li className="nav-item">
-              <button className="nav-link btn btn-danger" onClick={this.logMeOut}>LogOut</button>
+              <button className="btn btn-danger" onClick={this.logMeOut}><FontAwesomeIcon icon={faGooglePlusSquare}/></button>
             </li>
           </ul>
         );
