@@ -34,7 +34,7 @@ margin: 10px;
         }
       #halfOne {
         position: absolute;
-        top: 34%;
+        top: 33%;
         right: 55%;
         text-align: right !important;
         font-size: 2.2rem;
@@ -48,7 +48,7 @@ margin: 10px;
       #halfTwo {
         position: absolute;
         text-align: left !important;
-        top: 34%;
+        top: 33%;
         left: 56%;
         font-size: 2.2rem;
         // transform: translate(-50%, -50%);
@@ -62,10 +62,16 @@ margin: 10px;
 
     }
     .card-footer {
-      justify-content: space-around;
-      .card-btn {
-        margin: 5px;
-        font-family: $font1;
+      .buttonHolder {
+        justify-content: space-between;
+        .dropdown {
+          width: fit-content;
+          .dropdown-item {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            font-weight: 750;
+          }
+        }
       }
     }
   }

@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+} from 'reactstrap';
 import './Word.scss';
 
 
@@ -7,6 +13,7 @@ import randomWord from '../../../helpers/data/wordData';
 class TattooWord extends React.Component {
   state = {
     word: [],
+    font: 'font1',
   }
 
   splitWord = () => {
@@ -34,7 +41,10 @@ class TattooWord extends React.Component {
       .catch((err) => console.error('error from splitWord', err));
   }
 
-  // onClick toggle class of "tattoScript" to match selected tattooScript in dropdown on card
+  fontPicker = (e) => {
+    const newFont = e.target.id;
+    this.setState({ font: newFont });
+  }
 
   componentDidMount() {
     this.splitWord();
@@ -42,6 +52,7 @@ class TattooWord extends React.Component {
 
   render() {
     const bellyWord = this.state.word;
+    const pickedFont = this.state.font;
     const halfOne = bellyWord[0];
     const halfTwo = bellyWord[1];
     return (
@@ -49,21 +60,23 @@ class TattooWord extends React.Component {
         <div className="card col-md-6">
           <div className="tattoo-holder">
             <img className="card-img-top" src="https://i.imgur.com/tUVzOw5.jpg" alt="test belly"/>
-            <div className="tattooScript font1" id="halfOne"><span>{ halfOne }</span></div>
-            <div className="tattooScript font1" id="halfTwo"><span>{ halfTwo }</span></div>
+            <div className="tattooScript" id="halfOne"><span className={ pickedFont }>{ halfOne }</span></div>
+            <div className="tattooScript" id="halfTwo"><span className={ pickedFont }>{ halfTwo }</span></div>
           </div>
         <div className="card-footer">
-          <div className="dropdown">
-            <button className="btn btn-dark dropdown-toggle card-btn" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Choose Font
-            </button>
-            <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button className="dropdown-item font1" type="button" id="font1">font 1</button>
-              <button className="dropdown-item font2" type="button" id="font2">font 2</button>
-              <button className="dropdown-item font3" type="button" id="font3">font 3</button>
-            </div>
-          <button className="btn btn-dark card-btn" id="saveTattoo">Save</button>
-          <button className="btn btn-dark card-btn" id="tryAgain" onClick={this.splitWord}>go again</button>
+          <div className="buttonHolder">
+            <button className="btn btn-dark card-btn" id="saveTattoo">Save</button>
+            <button className="btn btn-dark card-btn" id="tryAgain" onClick={this.splitWord}>Get Inked</button>
+              <UncontrolledDropdown >
+                <DropdownToggle className="btn btn-dark dropdown-toggle card-btn" id="dropdownMenu2" nav caret>
+                  Choose Font
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem className="dropdown-item font1" type="button" id="font1" onClick={this.fontPicker}>Libre Baskerville</DropdownItem>
+                  <DropdownItem className="dropdown-item font2" type="button" id="font2" onClick={this.fontPicker}>Uncial Antiqua</DropdownItem>
+                  <DropdownItem className="dropdown-item font3" type="button" id="font3" onClick={this.fontPicker}>Shadows Into Light</DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
           </div>
         </div>
       </div>

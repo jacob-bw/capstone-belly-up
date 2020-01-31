@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Nav,
+  NavbarBrand,
   NavItem,
   UncontrolledDropdown,
   DropdownToggle,
@@ -27,7 +28,6 @@ class MyNav extends React.Component {
     e.preventDefault();
     firebase.auth().signOut();
   }
-
 
   render() {
     const { authed } = this.props;
@@ -64,7 +64,7 @@ class MyNav extends React.Component {
     return (
       <div className="MyNavbar">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <Link className="navbar-brand" to="/">Belly Up</Link>
+          <NavbarBrand href="/home" className="mr-auto">Belly Up</NavbarBrand>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

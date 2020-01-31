@@ -1,19 +1,5 @@
 @import '../../../styles/index.scss';
-// .myNavbar {
-//   height: 40px;
-//   li {  
-//     margin: 3px;
-//     .nav-item {
-//       margin: 3px;
-//       .svg-inline--fa {
-//         font-size: 2rem;
-//         margin: none;
-//         border: none;
-//         border-style: none;
-//       }
-//     }
-//   }
-// }
+
 nav {
   .nav-link {
     font-size: 2rem;
@@ -24,9 +10,11 @@ nav {
   #saveBtn {
     color: $ink;
   }
-  
-  #bellyMenu {
-    color: $ink;
-    font-size: 1rem;
+  .dropdown {
+    padding-top: 8px;
+    #bellyMenu {
+      color: $ink;
+      font-size: 1rem;
+    }
   }
 }
