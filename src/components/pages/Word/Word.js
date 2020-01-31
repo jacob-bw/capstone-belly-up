@@ -34,6 +34,7 @@ class TattooWord extends React.Component {
       .catch((err) => console.error('error from splitWord', err));
   }
 
+  // onClick toggle class of "tattoScript" to match selected tattooScript in dropdown on card
 
   componentDidMount() {
     this.splitWord();
@@ -48,8 +49,8 @@ class TattooWord extends React.Component {
         <div className="card col-md-6">
           <div className="tattoo-holder">
             <img className="card-img-top" src="https://i.imgur.com/tUVzOw5.jpg" alt="test belly"/>
-            <div className="tattooScript" id="halfOne"><span>{ halfOne }</span></div>
-            <div className="tattooScript" id="halfTwo"><span>{ halfTwo }</span></div>
+            <div className="tattooScript font1" id="halfOne"><span>{ halfOne }</span></div>
+            <div className="tattooScript font1" id="halfTwo"><span>{ halfTwo }</span></div>
           </div>
         <div className="card-footer">
           <div className="dropdown">
@@ -57,12 +58,12 @@ class TattooWord extends React.Component {
               Choose Font
             </button>
             <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-              <button className="dropdown-item" type="button" id="font1">font 1</button>
-              <button className="dropdown-item" type="button" id="font2">font 2</button>
-              <button className="dropdown-item" type="button" id="font3">font 3</button>
+              <button className="dropdown-item font1" type="button" id="font1">font 1</button>
+              <button className="dropdown-item font2" type="button" id="font2">font 2</button>
+              <button className="dropdown-item font3" type="button" id="font3">font 3</button>
             </div>
           <button className="btn btn-dark card-btn" id="saveTattoo">Save</button>
-          <button className="btn btn-dark card-btn" id="tryAgain">go again</button>
+          <button className="btn btn-dark card-btn" id="tryAgain" onClick={this.splitWord}>go again</button>
           </div>
         </div>
       </div>

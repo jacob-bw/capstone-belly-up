@@ -1,15 +1,32 @@
-.myNavbar {
-  height: 40px;
-  li {  
-    margin: 3px;
-    .nav-item {
-      margin: 3px;
-      .svg-inline--fa {
-        font-size: 2rem;
-        margin: none;
-        border: none;
-        border-style: none;
-      }
-    }
+@import '../../../styles/index.scss';
+// .myNavbar {
+//   height: 40px;
+//   li {  
+//     margin: 3px;
+//     .nav-item {
+//       margin: 3px;
+//       .svg-inline--fa {
+//         font-size: 2rem;
+//         margin: none;
+//         border: none;
+//         border-style: none;
+//       }
+//     }
+//   }
+// }
+nav {
+  .nav-link {
+    font-size: 2rem;
+  }
+  #logoutBtn {
+    color: $ink;
+  }
+  #saveBtn {
+    color: $ink;
+  }
+  
+  #bellyMenu {
+    color: $ink;
+    font-size: 1rem;
   }
 }

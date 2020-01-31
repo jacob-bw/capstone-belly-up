@@ -2,7 +2,6 @@ import React from 'react';
 import {
   Nav,
   NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -15,6 +14,8 @@ import 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons';
+
+import './nav.scss';
 
 class MyNav extends React.Component {
   static propTypes= {
@@ -35,8 +36,8 @@ class MyNav extends React.Component {
         return (
           <div className="navbar-nav ml-auto">
             <Nav pills>
-              <UncontrolledDropdown>
-                <DropdownToggle nav caret>
+              <UncontrolledDropdown >
+                <DropdownToggle id="bellyMenu" nav caret>
                   Choose New Belly
                 </DropdownToggle>
                 <DropdownMenu>
@@ -47,34 +48,14 @@ class MyNav extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
-                <NavLink className="nav-link saved" to="/saved"><FontAwesomeIcon icon={faBook}/></NavLink>
+                <Link className="nav-link" to="/saved"><FontAwesomeIcon id="saveBtn" icon={faBook}/></Link>
               </NavItem>
               <NavItem>
-                <NavLink className="" onClick={this.logMeOut}><FontAwesomeIcon icon={faGooglePlusSquare}/></NavLink>
+                <Link className="nav-link logoutBtn" to="/home" onClick={this.logMeOut}><FontAwesomeIcon id="logoutBtn" icon={faGooglePlusSquare}/></Link>
               </NavItem>
             </Nav>
           </div>
         );
-        // <ul className="navbar-nav ml-auto">
-        //   <li className="nav-item">
-        //     <Link className="nav-link saved" to="/saved"><FontAwesomeIcon icon={faBook}/></Link>
-        //   </li>
-        //   <li className="nav-item">
-        //     <div className="dropdown">
-        //       <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        //         Change Belly
-        //       </button>
-        //       <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-        //         <button className="dropdown-item" type="button" id="belly1">Belly Image 1</button>
-        //         <button className="dropdown-item" type="button" id="belly2">Belly Image 2</button>
-        //         <button className="dropdown-item" type="button" id="belly3">Belly Image 3</button>
-        //       </div>
-        //     </div>
-        //   </li>
-        //   <li className="nav-item">
-        //     <button className="btn btn-danger" onClick={this.logMeOut}><FontAwesomeIcon icon={faGooglePlusSquare}/></button>
-        //   </li>
-        // </ul>
       }
 
       return (<ul className="navbar-nav ml-auto"></ul>);
@@ -82,7 +63,7 @@ class MyNav extends React.Component {
 
     return (
       <div className="MyNavbar">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light">
           <Link className="navbar-brand" to="/">Belly Up</Link>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

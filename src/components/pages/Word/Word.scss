@@ -18,13 +18,23 @@ margin: 10px;
         border-radius: 0px;
       }
       .tattooScript {
-        font-family: $font1;
         z-index: 1;
-        color: #0f0f0a;
+        color: $ink;
+        text-transform: uppercase;
+        font-weight: 750;
       }
+      .font1 {
+        font-family: $font1;
+      }
+      .font2 {
+        font-family: $font2;
+      }
+      .font3 {
+        font-family: $font3;
+        }
       #halfOne {
         position: absolute;
-        top: 33%;
+        top: 34%;
         right: 55%;
         text-align: right !important;
         font-size: 2.2rem;
@@ -38,7 +48,7 @@ margin: 10px;
       #halfTwo {
         position: absolute;
         text-align: left !important;
-        top: 33%;
+        top: 34%;
         left: 56%;
         font-size: 2.2rem;
         // transform: translate(-50%, -50%);
