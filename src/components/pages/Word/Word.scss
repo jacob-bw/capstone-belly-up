@@ -64,14 +64,19 @@ margin: 10px;
     }
     .card-footer {
       .buttonHolder {
-        justify-content: space-between;
+        justify-content: space-around;
         .dropdown {
           width: fit-content;
+          display: inline-block;
+          vertical-align: middle;
           .dropdown-item {
             font-size: 1.3rem;
             text-transform: uppercase;
             font-weight: 750;
           }
+        }
+        .btn-dark {
+          margin: 5px;
         }
       }
     }

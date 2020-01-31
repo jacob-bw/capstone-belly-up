@@ -68,7 +68,7 @@ class TattooWord extends React.Component {
             <button className="btn btn-dark card-btn" id="saveTattoo">Save</button>
             <button className="btn btn-dark card-btn" id="tryAgain" onClick={this.splitWord}>Get Inked</button>
               <UncontrolledDropdown >
-                <DropdownToggle className="btn btn-dark dropdown-toggle card-btn" id="dropdownMenu2" nav caret>
+                <DropdownToggle className="btn btn-dark dropdown-toggle card-btn align-middle" id="dropdownMenu2" nav caret>
                   Choose Font
                 </DropdownToggle>
                 <DropdownMenu>
