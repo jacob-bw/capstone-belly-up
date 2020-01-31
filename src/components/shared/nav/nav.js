@@ -41,10 +41,9 @@ class MyNav extends React.Component {
                   Choose New Belly
                 </DropdownToggle>
                 <DropdownMenu>
-                  {/* ask/find out how to toggle 'disabled' attribute on a component */}
-                  <DropdownItem>BellyImg One</DropdownItem>
-                  <DropdownItem>BellyImg Two</DropdownItem>
-                  <DropdownItem>BellyImg Three</DropdownItem>
+                  <DropdownItem className="belly1" id="belly1">BellyImg One</DropdownItem>
+                  <DropdownItem className="belly2" id="belly2">BellyImg Two</DropdownItem>
+                  <DropdownItem className="belly3" id="belly3">BellyImg Three</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
