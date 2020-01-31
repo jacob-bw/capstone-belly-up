@@ -1,5 +1,20 @@
-.nav-item {
-  .button {  
-    margin: 3px;
+@import '../../../styles/index.scss';
+
+nav {
+  .nav-link {
+    font-size: 2rem;
+  }
+  #logoutBtn {
+    color: $ink;
+  }
+  #saveBtn {
+    color: $ink;
+  }
+  .dropdown {
+    padding-top: 8px;
+    #bellyMenu {
+      color: $ink;
+      font-size: 1rem;
+    }
   }
 }

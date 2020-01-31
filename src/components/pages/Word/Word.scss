@@ -5,34 +5,79 @@
 display: flex;
 justify-content: center;
 margin: 10px;
-.card {
-  border-radius: 0px;
-  width: 500px;
-  justify-content: center;
-  position: relative;
-  text-align: center;
-  padding: 2px;
-    .card-img-top {
-      z-index: 0;
-      border-radius: 0px;
-    }
-    .tattooScript {
-      font-family: $font1;
-      z-index: 1;
-      #halfOne span {
-        position: absolute;
-        top: 50%;
-        left: 25%;
+  .card {
+    border-radius: 0px;
+    max-width: 500px;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    padding: 2px;
+    background-color: $bargle;
+      .card-img-top {
+        z-index: 0;
+        border-radius: 0px;
       }
-      #halfTwo span {
-        position: absolute;
-        top: 50%;
-        right: 25%;
+      .tattooScript {
+        z-index: 1;
+        color: $ink;
+        text-transform: uppercase;
+        font-weight: 750;
+        max-width: 45%;
       }
-    }
+      .font1 {
+        font-family: $font1;
+      }
+      .font2 {
+        font-family: $font2;
+      }
+      .font3 {
+        font-family: $font3;
+        }
+      #halfOne {
+        position: absolute;
+        top: 33%;
+        right: 55%;
+        text-align: right !important;
+        font-size: 2.2rem;
+        // transform: translate(-50%, -50%);
+        margin-right: 0% !important;
+        span {
+          margin-right: 0% !important;
+          text-align: right;
+        }
+      }
+      #halfTwo {
+        position: absolute;
+        text-align: left !important;
+        top: 33%;
+        left: 56%;
+        font-size: 2.2rem;
+        // transform: translate(-50%, -50%);
+        margin-left: 0% !important;
+        span {
+          margin-left: 0% !important;
+          text-align: left;
+        }
+      }
+      
 
-  }
-  .card-btn {
-    margin: 5px;
+    }
+    .card-footer {
+      .buttonHolder {
+        justify-content: space-around;
+        .dropdown {
+          width: fit-content;
+          display: inline-block;
+          vertical-align: middle;
+          .dropdown-item {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            font-weight: 750;
+          }
+        }
+        .btn-dark {
+          margin: 5px;
+        }
+      }
     }
   }

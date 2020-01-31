@@ -22,7 +22,7 @@ const getRandomWord = () => new Promise((resolve, reject) => {
       const hasO = validate.includes('O');
       const noSpace = validate.includes(' ');
       const oneWord = validate.includes('-');
-      if (hasO === true && oneWord === false && noSpace === false) {
+      if (hasO === true && oneWord === false && noSpace === false && baseWord.length < 12) {
         resolve(baseWord);
       } else {
         resolve(getRandomWord());
