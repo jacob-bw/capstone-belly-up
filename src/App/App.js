@@ -1,6 +1,10 @@
 import React from 'react';
-// eslint-disable-next-line object-curly-newline
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import './App.scss';
