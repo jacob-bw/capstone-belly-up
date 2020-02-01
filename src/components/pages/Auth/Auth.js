@@ -8,9 +8,6 @@ import PropTypes from 'prop-types';
 import './Auth.scss';
 
 class Auth extends React.Component {
-  static propTypes= {
-    authed: PropTypes.bool,
-  }
 
   loginClickEvent = (e) => {
     e.preventDefault();
@@ -19,7 +16,6 @@ class Auth extends React.Component {
   }
 
   render() {
-    const authed = this.props;
     return (
       <div className="Auth">
         {
