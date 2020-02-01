@@ -50,7 +50,6 @@ class TattooWord extends React.Component {
 
   saveCard = (e) => {
     e.preventDefault();
-    console.log(this.props);
     const newTattooObj = {
       imgUrl: this.state.tum,
       uid: savedData.getUid(),
@@ -59,9 +58,8 @@ class TattooWord extends React.Component {
       half2: this.state.word[1],
       word: `${this.state.word[0]}o${this.state.word[1]}`,
     };
-    console.log(newTattooObj);
     savedData.saveNewTattoo(newTattooObj)
-      .then(() => console.log('you did it!', newTattooObj))
+      .then(() => console.log('tattoo added to archive', newTattooObj.word))
       .catch((err) => console.error('err from saveCard', err));
   }
 
@@ -95,7 +93,7 @@ class TattooWord extends React.Component {
                   <DropdownItem className='dropdown-item font3' type='button' id='font3' onClick={this.fontPicker}>Shadows Into Light</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-            <button className='btn btn-dark card-btn' id='saveTattoo' onClick={this.saveCard}>Save</button>
+              <button className='btn btn-dark card-btn' id='saveTattoo' onClick={this.saveCard}>Save</button>
             <button className='btn btn-dark card-btn' id='tryAgain' onClick={this.splitWord}>Get Inked</button>
           </div>
         </div>

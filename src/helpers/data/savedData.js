@@ -29,7 +29,7 @@ const saveNewTattoo = (freshInk) => axios.post(`${baseUrl}/tums/.json`, freshInk
 
 const updateTattoo = (noRegerts, tattooId) => axios.put(`${baseUrl}/tums/${tattooId}.json`, noRegerts);
 
-const deleteTattoo = (tattooId) => axios.delete(`${baseUrl}/tums/${tattooId}`);
+const deleteTattoo = (tattooId) => axios.delete(`${baseUrl}/tums/${tattooId}.json`);
 
 export default {
   getSavedTattoosByUid,

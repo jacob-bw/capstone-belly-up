@@ -5,12 +5,21 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import Proptypes from 'prop-types';
 
 import cardShape from '../../../helpers/propz/cardShape';
 
 class TattooCard extends React.Component {
   static propTypes = {
     tattooCard: cardShape.cardShape,
+    deleteTattoo: Proptypes.func,
+    fontPicker: Proptypes.func,
+  }
+
+  deleteTattooEvent = (e) => {
+    e.preventDefault();
+    const { deleteTattoo, tattoo } = this.props;
+    deleteTattoo(tattoo.id);
   }
 
   fontPicker = (e) => {
@@ -21,7 +30,7 @@ class TattooCard extends React.Component {
   render() {
     const { tattoo } = this.props;
     return (
-      <div className='wordCard'>
+      <div className='wordCard' id={tattoo.id}>
         <div className='card'>
           <div className='tattoo-holder'>
             <img className='card-img-top saved' src={tattoo.imgUrl} alt={tattoo.word}/>
@@ -41,7 +50,7 @@ class TattooCard extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown>
             <button className='btn btn-dark card-btn' id='updateTattoo'>Update</button>
-            <button className='btn btn-dark card-btn' id='tryAgain' onClick={this.splitWord}>delete</button>
+            <button className='btn btn-dark card-btn' id={tattoo.id} onClick={this.deleteTattooEvent}>delete</button>
           </div>
         </div>
       </div>
