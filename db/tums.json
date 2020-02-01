@@ -1,0 +1,26 @@
+{
+  "tattoo1": {
+    "imgUrl":"https://i.imgur.com/tUVzOw5.jpg",
+    "uid": "uabgEP0tRQbPV86B6WyJCmfxfrR2",
+    "font": "font1",
+    "word":"goddammit",
+    "half1": "g",
+    "half2": "ddammit"
+  },
+  "tattoo2": {
+    "imgUrl": "https://i.imgur.com/dYVeIRv.jpg",
+    "uid": "uabgEP0tRQbPV86B6WyJCmfxfrR2",
+    "font": "font2",
+    "word": "broken",
+    "half1": "br",
+    "half2": "broken"
+  },
+  "tattoo3": {
+    "imgUrl":"https://i.imgur.com/Fw8ul6U.jpg",
+    "uid": "12345",
+    "font": "font1",
+    "word": "Neopythagorean",
+    "half1": "Neopythag",
+    "half2": "rean"
+  }
+}
