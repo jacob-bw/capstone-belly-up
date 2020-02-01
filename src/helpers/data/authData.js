@@ -7,4 +7,11 @@ const firebaseApp = () => {
   }
 };
 
-export default firebaseApp;
+// const getUid = () => firebase.auth().currentUser.uid;
+
+const authFuncs = () => {
+  // getUid();
+  firebaseApp();
+};
+
+export default authFuncs;

@@ -29,6 +29,7 @@ class MyNav extends React.Component {
     firebase.auth().signOut();
   }
 
+
   render() {
     const { authed } = this.props;
     const buildNavbar = () => {
@@ -41,16 +42,16 @@ class MyNav extends React.Component {
                   Choose New Belly
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem className="belly1" id="belly1">BellyImg One</DropdownItem>
-                  <DropdownItem className="belly2" id="belly2">BellyImg Two</DropdownItem>
-                  <DropdownItem className="belly3" id="belly3">BellyImg Three</DropdownItem>
+                  <DropdownItem className="bellyImg" id="belly1" onClick={this.bellyPicker}><img src="https://i.imgur.com/tUVzOw5.jpg" alt="belly 1"></img></DropdownItem>
+                  <DropdownItem className="bellyImg" id="belly2" onClick={this.bellyPicker}><img src="https://i.imgur.com/dYVeIRv.jpg" alt="belly 2"></img></DropdownItem>
+                  <DropdownItem className="bellyImg" id="belly3" onClick={this.bellyPicker}><img src="https://i.imgur.com/Fw8ul6U.jpg" alt="belly3"></img></DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
               <NavItem>
                 <Link className="nav-link" to="/saved"><FontAwesomeIcon id="saveBtn" icon={faBook}/></Link>
               </NavItem>
               <NavItem>
-                <Link className="nav-link logoutBtn" to="/home" onClick={this.logMeOut}><FontAwesomeIcon id="logoutBtn" icon={faGooglePlusSquare}/></Link>
+                <Link className="nav-link logoutBtn" to="/auth" onClick={this.logMeOut}><FontAwesomeIcon id="logoutBtn" icon={faGooglePlusSquare}/></Link>
               </NavItem>
             </Nav>
           </div>
