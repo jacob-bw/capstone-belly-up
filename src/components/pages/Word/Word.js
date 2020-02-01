@@ -48,8 +48,19 @@ class TattooWord extends React.Component {
   }
 
   bellyPicker = (e) => {
-    const newTum = e.target.id;
-    this.setState({ tum: newTum });
+    const tumId = e.target.id;
+    let newTum = '';
+    console.log(tumId);
+    if (tumId === 'belly1') {
+      newTum = 'https://i.imgur.com/tUVzOw5.jpg';
+      this.setState({ tum: newTum });
+    } else if (tumId === 'belly2') {
+      newTum = 'https://i.imgur.com/dYVeIRv.jpg';
+      this.setState({ tum: newTum });
+    } else if (tumId === 'belly3') {
+      newTum = 'https://i.imgur.com/Fw8ul6U.jpg';
+      this.setState({ tum: newTum });
+    }
   }
 
   componentDidMount() {
@@ -63,27 +74,27 @@ class TattooWord extends React.Component {
     const halfOne = bellyWord[0];
     const halfTwo = bellyWord[1];
     return (
-      <div className="wordCard">
-        <div className="card col-md-6">
-          <div className="tattoo-holder">
-            <img className="card-img-top" src={ pickedTum } alt=""/>
-            <div className="tattooScript" id="halfOne"><span className={ pickedFont }>{ halfOne }</span></div>
-            <div className="tattooScript" id="halfTwo"><span className={ pickedFont }>{ halfTwo }</span></div>
+      <div className='wordCard'>
+        <div className='card col-md-6'>
+          <div className='tattoo-holder'>
+            <img className='card-img-top' src={ pickedTum } alt=''/>
+            <div className='tattooScript' id='halfOne'><span className={ pickedFont }>{ halfOne }</span></div>
+            <div className='tattooScript' id='halfTwo'><span className={ pickedFont }>{ halfTwo }</span></div>
           </div>
-        <div className="card-footer">
-          <div className="buttonHolder">
+        <div className='card-footer'>
+          <div className='buttonHolder'>
               <UncontrolledDropdown >
-                <DropdownToggle className="btn btn-dark dropdown-toggle card-btn align-middle" id="dropdownMenu2" nav caret>
+                <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu2' nav caret>
                   Choose Font
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem className="dropdown-item font1" type="button" id="font1" onClick={this.fontPicker}>Libre Baskerville</DropdownItem>
-                  <DropdownItem className="dropdown-item font2" type="button" id="font2" onClick={this.fontPicker}>Uncial Antiqua</DropdownItem>
-                  <DropdownItem className="dropdown-item font3" type="button" id="font3" onClick={this.fontPicker}>Shadows Into Light</DropdownItem>
+                  <DropdownItem className='dropdown-item font1' type='button' id='font1' onClick={this.fontPicker}>Libre Baskerville</DropdownItem>
+                  <DropdownItem className='dropdown-item font2' type='button' id='font2' onClick={this.fontPicker}>Uncial Antiqua</DropdownItem>
+                  <DropdownItem className='dropdown-item font3' type='button' id='font3' onClick={this.fontPicker}>Shadows Into Light</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-            <button className="btn btn-dark card-btn" id="saveTattoo">Save</button>
-            <button className="btn btn-dark card-btn" id="tryAgain" onClick={this.splitWord}>Get Inked</button>
+            <button className='btn btn-dark card-btn' id='saveTattoo'>Save</button>
+            <button className='btn btn-dark card-btn' id='tryAgain' onClick={this.splitWord}>Get Inked</button>
           </div>
         </div>
       </div>

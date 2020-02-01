@@ -15,8 +15,16 @@ import 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons';
+import Auth from '../../pages/Auth/Auth';
 
 import './nav.scss';
+
+// Saturday Help Notes:
+// get help w/ routing
+// get help w/ navbar img selection function
+// CRUD is all that remains after those two functions and should be relatively straightforward
+// get help w/ how to toggle on logout/login.
+// toggle navbar login button and "save" button on tattoo card
 
 class MyNav extends React.Component {
   static propTypes= {
@@ -51,7 +59,9 @@ class MyNav extends React.Component {
                 <Link className="nav-link" to="/saved"><FontAwesomeIcon id="saveBtn" icon={faBook}/></Link>
               </NavItem>
               <NavItem>
-                <Link className="nav-link logoutBtn" to="/auth" onClick={this.logMeOut}><FontAwesomeIcon id="logoutBtn" icon={faGooglePlusSquare}/></Link>
+                {
+                 (authed) && <Link className="nav-link logoutBtn" to="/auth" onClick={this.logMeOut}><FontAwesomeIcon id="logoutBtn" icon={faGooglePlusSquare}/></Link>
+                }
               </NavItem>
             </Nav>
           </div>
@@ -72,6 +82,9 @@ class MyNav extends React.Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             { buildNavbar() }
           </div>
+          {
+            (!authed) && <Auth/>
+          }
         </nav>
       </div>
     );
