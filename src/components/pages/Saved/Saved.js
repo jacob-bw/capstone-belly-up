@@ -16,11 +16,6 @@ class Saved extends React.Component {
       .catch((error) => console.error('error from get tattoos', error));
   }
 
-  getTattooToUpdateId = (e) => {
-    // some stuff
-  }
-
-
   deleteTattoo = (tattooId) => {
     savedData.deleteTattoo(tattooId)
       .then(() => {
@@ -30,20 +25,21 @@ class Saved extends React.Component {
       .catch((err) => console.error('error from delete tattoo', err));
   }
 
-  // updateCard = (e) => {
-  //   e.preventDefault();
-  //   const updatedTattooObj = {
-  //     imgUrl: this.state.tum,
-  //     uid: savedData.getUid(),
-  //     font: this.state.font,
-  //     half1: this.state.word[0],
-  //     half2: this.state.word[1],
-  //     word: `${this.state.word[0]}o${this.state.word[1]}`,
-  //   };
-  //   savedData.updateTattoo(updatedTattooObj)
-  //     .then(() => console.log('tattoo added to archive', updatedTattooObj.word))
-  //     .catch((err) => console.error('err from saveCard', err));
-  // }
+  updateCard = (e) => {
+    // just needs to update the text or img
+    e.preventDefault();
+    const updatedTattooObj = {
+      imgUrl: this.state.tum,
+      uid: savedData.getUid(),
+      font: this.state.font,
+      half1: this.state.word[0],
+      half2: this.state.word[1],
+      word: `${this.state.word[0]}o${this.state.word[1]}`,
+    };
+    savedData.updateTattoo(updatedTattooObj)
+      .then(() => console.log('tattoo added to archive', updatedTattooObj.word))
+      .catch((err) => console.error('err from saveCard', err));
+  }
 
   componentDidMount() {
     this.getTattoos();

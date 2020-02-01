@@ -27,14 +27,35 @@ const getSavedTattoosByUid = (uid) => new Promise((resolve, reject) => {
 
 const saveNewTattoo = (freshInk) => axios.post(`${baseUrl}/tums/.json`, freshInk);
 
-const updateTattoo = (noRegerts, tattooId) => axios.put(`${baseUrl}/tums/${tattooId}.json`, noRegerts);
+const updateTattoo = (tattooId, noRegerts) => axios.put(`${baseUrl}/tums/${tattooId}.json`, noRegerts);
 
 const deleteTattoo = (tattooId) => axios.delete(`${baseUrl}/tums/${tattooId}.json`);
+
+const updateTattooInfo = (tattooId, updatedTattooInfo) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/tums/${tattooId}.json`)
+    .then((response) => {
+      const tattooObject = { ...response.data };
+      tattooObject.imgUrl = updatedTattooInfo.imgUrl;
+      tattooObject.uid = updatedTattooInfo.uid;
+      tattooObject.font = updatedTattooInfo.font;
+      // eslint-disable-next-line prefer-destructuring
+      tattooObject.half1 = updatedTattooInfo.word[0];
+      // eslint-disable-next-line prefer-destructuring
+      tattooObject.half2 = updatedTattooInfo.word[1];
+      tattooObject.word = `${updatedTattooInfo.word[0]}o${updatedTattooInfo.word[1]}`;
+      updateTattoo(tattooId, tattooObject)
+        .then(() => {
+          resolve();
+        });
+    })
+    .catch((errorFromUpdateTattoo) => reject(errorFromUpdateTattoo));
+});
+
 
 export default {
   getSavedTattoosByUid,
   getUid,
   saveNewTattoo,
-  updateTattoo,
+  updateTattooInfo,
   deleteTattoo,
 };
