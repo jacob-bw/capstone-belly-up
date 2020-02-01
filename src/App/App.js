@@ -14,6 +14,7 @@ import Auth from '../components/pages/Auth/Auth';
 import firebaseConnection from '../helpers/data/authData';
 import TattooWord from '../components/pages/Word/Word';
 import MyNav from '../components/shared/nav/nav';
+import Saved from '../components/pages/Saved/Saved';
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = (props) => (authed === false ? <Component {...props} {...rest}/> : <Redirect to={{ pathname: '/', state: { from: props.location } }}/>);
@@ -55,7 +56,7 @@ class App extends React.Component {
           <Switch>
             <PublicRoute path="/home" exact component={Auth} authed={authed}/>
             <TattooWord path="/" exact component={TattooWord} authed={authed}/>
-            <PrivateRoute path="/auth" exact component={Auth} authed={authed}/>
+            <PrivateRoute path="/saved" exact component={Saved} authed={authed}/>
           </Switch>
         </Router>
       </div>
