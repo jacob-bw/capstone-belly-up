@@ -2,9 +2,9 @@ import axios from 'axios';
 import firebase from 'firebase';
 import apiKeys from '../apiKeys.json';
 
-const getUid = () => firebase.auth().currentUser.uid;
-
 const baseUrl = apiKeys.firebaseConfig.databaseURL;
+
+const getUid = () => firebase.auth().currentUser.uid;
 
 const getSavedTattoosByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/tums.json?orderBy="uid"&equalTo="${uid}"`)
@@ -25,4 +25,16 @@ const getSavedTattoosByUid = (uid) => new Promise((resolve, reject) => {
     });
 });
 
-export default { getSavedTattoosByUid, getUid };
+const saveNewTattoo = (freshInk) => axios.post(`${baseUrl}/tums/.json`, freshInk);
+
+const updateTattoo = (noRegerts, tattooId) => axios.put(`${baseUrl}/tums/${tattooId}.json`, noRegerts);
+
+const deleteTattoo = (tattooId) => axios.delete(`${baseUrl}/tums/${tattooId}`);
+
+export default {
+  getSavedTattoosByUid,
+  getUid,
+  saveNewTattoo,
+  updateTattoo,
+  deleteTattoo,
+};
