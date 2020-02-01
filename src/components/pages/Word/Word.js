@@ -9,6 +9,7 @@ import './Word.scss';
 
 
 import randomWord from '../../../helpers/data/wordData';
+import savedData from '../../../helpers/data/savedData';
 
 class TattooWord extends React.Component {
   state = {
@@ -47,20 +48,21 @@ class TattooWord extends React.Component {
     this.setState({ font: newFont });
   }
 
-  bellyPicker = (e) => {
-    const tumId = e.target.id;
-    let newTum = '';
-    console.log(tumId);
-    if (tumId === 'belly1') {
-      newTum = 'https://i.imgur.com/tUVzOw5.jpg';
-      this.setState({ tum: newTum });
-    } else if (tumId === 'belly2') {
-      newTum = 'https://i.imgur.com/dYVeIRv.jpg';
-      this.setState({ tum: newTum });
-    } else if (tumId === 'belly3') {
-      newTum = 'https://i.imgur.com/Fw8ul6U.jpg';
-      this.setState({ tum: newTum });
-    }
+  saveCard = (e) => {
+    e.preventDefault();
+    console.log(this.props);
+    const newTattooObj = {
+      imgUrl: this.state.tum,
+      uid: savedData.getUid(),
+      font: this.state.font,
+      half1: this.state.word[0],
+      half2: this.state.word[1],
+      word: `${this.state.word[0]}o${this.state.word[1]}`,
+    };
+    console.log(newTattooObj);
+    savedData.saveNewTattoo(newTattooObj)
+      .then(() => console.log('you did it!', newTattooObj))
+      .catch((err) => console.error('err from saveCard', err));
   }
 
   componentDidMount() {
@@ -93,7 +95,7 @@ class TattooWord extends React.Component {
                   <DropdownItem className='dropdown-item font3' type='button' id='font3' onClick={this.fontPicker}>Shadows Into Light</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-            <button className='btn btn-dark card-btn' id='saveTattoo'>Save</button>
+            <button className='btn btn-dark card-btn' id='saveTattoo' onClick={this.saveCard}>Save</button>
             <button className='btn btn-dark card-btn' id='tryAgain' onClick={this.splitWord}>Get Inked</button>
           </div>
         </div>
