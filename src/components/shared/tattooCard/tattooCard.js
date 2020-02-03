@@ -23,11 +23,11 @@ class TattooCard extends React.Component {
     deleteTattoo(tattoo.id);
   }
 
-  updateTattooEvent = (e) => {
-    e.preventDefault();
-    const { updateTattoo, tattoo } = this.props;
-    updateTattoo(tattoo.id);
-  }
+  // updateTattooEvent = (e) => {
+  //   e.preventDefault();
+  //   const { updateTattoo, tattoo } = this.props;
+  //   updateTattoo(tattoo.id);
+  // }
 
   render() {
     const { tattoo } = this.props;
@@ -41,7 +41,7 @@ class TattooCard extends React.Component {
           </div>
         <div className='card-footer'>
           <div className='buttonHolder'>
-          <UncontrolledDropdown>
+          {/* <UncontrolledDropdown>
               <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu3' nav caret>
                 New Belly
               </DropdownToggle>
@@ -50,7 +50,7 @@ class TattooCard extends React.Component {
                 <DropdownItem className='dropdown-item belly2' type='button' id='belly2' onClick={this.tumPicker}><img src="https://i.imgur.com/dYVeIRv.jpg" alt=" "></img></DropdownItem>
                 <DropdownItem className='dropdown-item belly3' type='button' id='belly3' onClick={this.tumPicker}><img src="https://i.imgur.com/Fw8ul6U.jpg" alt=" "></img></DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
             <UncontrolledDropdown >
               <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu2' nav caret>
                 Choose Font

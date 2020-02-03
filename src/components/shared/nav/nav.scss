@@ -2,7 +2,17 @@
 
 nav {
   font-family: $font1;
-
+  .navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 1rem;
+  }
+  li {
+    list-style: none;
+  }
   .nav-link {
     font-size: 2rem;
     display: inline-block;
@@ -14,24 +24,28 @@ nav {
   #saveBtn {
     color: $ink;
   }
-  .dropdown {
-    padding-top: 8px;
-    #bellyMenu {
-      color: $ink;
-      background-color: transparent;
-      font-size: 1rem;
-    }
-    .dropdown-menu {
-      max-width: 150px;
-      justify-content: center;
-      .bellyImg.dropdown-item {
-        max-width: 150px;
-        justify-content: center;
-        img {
-          max-width: 140px;
-        }
-        
-      }
-    }
+  .navbar-brand {
+    color: $ink;
+    font-family: $font1;
+    font-size: 2rem;
   }
+  // .dropdown {
+  //   padding-top: 8px;
+  //   #bellyMenu {
+  //     color: $ink;
+  //     background-color: transparent;
+  //     font-size: 1rem;
+  //   }
+    // .dropdown-menu {
+    //   max-width: 150px;
+    //   justify-content: center;
+    //   .bellyImg.dropdown-item {
+    //     max-width: 150px;
+    //     justify-content: center;
+    //     img {
+    //       max-width: 140px;
+    //     } 
+    //   }
+    // }
+  // }
 }

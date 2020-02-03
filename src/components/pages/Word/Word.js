@@ -50,19 +50,19 @@ class TattooWord extends React.Component {
     this.setState({ font: newFont });
   }
 
-  tumPicker = (e) => {
-    const newTumVar = e.target.id;
-    if (newTumVar === 'belly1') {
-      // this.setState({ tum: 'https://i.imgur.com/tUVzOw5.jpg' });
-      console.log('newTumVar is belly1');
-    } else if (newTumVar === 'belly2') {
-      // this.setState({ tum: 'https://i.imgur.com/dYVeIRv.jpg' });
-      console.log('newTumVar is belly2');
-    } else if (newTumVar === 'belly3') {
-      // this.setState({ tum: 'https://i.imgur.com/Fw8ul6U.jpg' });
-      console.log('newTumVar is belly3');
-    }
-  }
+  // tumPicker = (e) => {
+  //   const newTumVar = e.target.id;
+  //   if (newTumVar === 'belly1') {
+  //     // this.setState({ tum: 'https://i.imgur.com/tUVzOw5.jpg' });
+  //     console.log('newTumVar is belly1');
+  //   } else if (newTumVar === 'belly2') {
+  //     // this.setState({ tum: 'https://i.imgur.com/dYVeIRv.jpg' });
+  //     console.log('newTumVar is belly2');
+  //   } else if (newTumVar === 'belly3') {
+  //     // this.setState({ tum: 'https://i.imgur.com/Fw8ul6U.jpg' });
+  //     console.log('newTumVar is belly3');
+  //   }
+  // }
 
   saveCard = (e) => {
     e.preventDefault();
@@ -100,7 +100,7 @@ class TattooWord extends React.Component {
           </div>
         <div className='card-footer'>
           <div className='buttonHolder'>
-            <UncontrolledDropdown>
+            {/* <UncontrolledDropdown>
               <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu3' nav caret>
                 New Belly
               </DropdownToggle>
@@ -109,7 +109,7 @@ class TattooWord extends React.Component {
                 <DropdownItem className='dropdown-item belly2' type='button' id='belly2' onClick={this.tumPicker}><img src="https://i.imgur.com/dYVeIRv.jpg" alt=" "></img></DropdownItem>
                 <DropdownItem className='dropdown-item belly3' type='button' id='belly3' onClick={this.tumPicker}><img src="https://i.imgur.com/Fw8ul6U.jpg" alt=" "></img></DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
             <UncontrolledDropdown >
               <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu2' nav caret>
                 New Font
