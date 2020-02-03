@@ -14,6 +14,7 @@ class TattooCard extends React.Component {
     tattooCard: cardShape.cardShape,
     deleteTattoo: Proptypes.func,
     fontPicker: Proptypes.func,
+    updateTattoo: Proptypes.func,
   }
 
   deleteTattooEvent = (e) => {
@@ -22,9 +23,10 @@ class TattooCard extends React.Component {
     deleteTattoo(tattoo.id);
   }
 
-  fontPicker = (e) => {
-    const newFont = e.target.id;
-    this.setState({ font: newFont });
+  updateTattooEvent = (e) => {
+    e.preventDefault();
+    const { updateTattoo, tattoo } = this.props;
+    updateTattoo(tattoo.id);
   }
 
   render() {
@@ -39,17 +41,27 @@ class TattooCard extends React.Component {
           </div>
         <div className='card-footer'>
           <div className='buttonHolder'>
-              <UncontrolledDropdown >
-                <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu2' nav caret>
-                  Choose Font
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem className='dropdown-item font1' type='button' id='font1' onClick={this.fontPicker}>Libre Baskerville</DropdownItem>
-                  <DropdownItem className='dropdown-item font2' type='button' id='font2' onClick={this.fontPicker}>Uncial Antiqua</DropdownItem>
-                  <DropdownItem className='dropdown-item font3' type='button' id='font3' onClick={this.fontPicker}>Shadows Into Light</DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            <button className='btn btn-dark card-btn' id='updateTattoo'>Update</button>
+          <UncontrolledDropdown>
+              <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu3' nav caret>
+                New Belly
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem className='dropdown-item belly1' type='button' id='belly1' onClick={this.tumPicker}><img src="https://i.imgur.com/tUVzOw5.jpg" alt=" "></img></DropdownItem>
+                <DropdownItem className='dropdown-item belly2' type='button' id='belly2' onClick={this.tumPicker}><img src="https://i.imgur.com/dYVeIRv.jpg" alt=" "></img></DropdownItem>
+                <DropdownItem className='dropdown-item belly3' type='button' id='belly3' onClick={this.tumPicker}><img src="https://i.imgur.com/Fw8ul6U.jpg" alt=" "></img></DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <UncontrolledDropdown >
+              <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu2' nav caret>
+                Choose Font
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem className='dropdown-item font1' type='button' id='font1' onClick={this.fontPicker}>Libre Baskerville</DropdownItem>
+                <DropdownItem className='dropdown-item font2' type='button' id='font2' onClick={this.fontPicker}>Uncial Antiqua</DropdownItem>
+                <DropdownItem className='dropdown-item font3' type='button' id='font3' onClick={this.fontPicker}>Shadows Into Light</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+            <button className='btn btn-dark card-btn' id='updateBtn' onClick={this.updateTattoo}>Update</button>
             <button className='btn btn-dark card-btn' id={tattoo.id} onClick={this.deleteTattooEvent}>delete</button>
           </div>
         </div>

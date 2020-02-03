@@ -17,6 +17,7 @@ margin: 10px;
         z-index: 0;
         border-radius: 0px;
       }
+
       .tattooScript {
         z-index: 1;
         color: $ink;
@@ -74,6 +75,9 @@ margin: 10px;
             font-size: 1.3rem;
             text-transform: uppercase;
             font-weight: 750;
+          }
+          img {
+            max-width: 200px;
           }
         }
         .btn-dark {

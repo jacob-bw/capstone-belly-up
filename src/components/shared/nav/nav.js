@@ -45,7 +45,7 @@ class MyNav extends React.Component {
         return (
           <div className="navbar-nav ml-auto">
             <Nav pills>
-              <UncontrolledDropdown >
+              {/* <UncontrolledDropdown >
                 <DropdownToggle id="bellyMenu" nav caret>
                   Choose New Belly
                 </DropdownToggle>
@@ -54,7 +54,7 @@ class MyNav extends React.Component {
                   <DropdownItem className="bellyImg" id="belly2" onClick={this.bellyPicker}><img src="https://i.imgur.com/dYVeIRv.jpg" alt="belly 2"></img></DropdownItem>
                   <DropdownItem className="bellyImg" id="belly3" onClick={this.bellyPicker}><img src="https://i.imgur.com/Fw8ul6U.jpg" alt="belly3"></img></DropdownItem>
                 </DropdownMenu>
-              </UncontrolledDropdown>
+              </UncontrolledDropdown> */}
               <NavItem>
                 <Link className="nav-link" to="/saved"><FontAwesomeIcon id="saveBtn" icon={faBook}/></Link>
               </NavItem>

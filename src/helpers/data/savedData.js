@@ -31,31 +31,38 @@ const updateTattoo = (tattooId, noRegerts) => axios.put(`${baseUrl}/tums/${tatto
 
 const deleteTattoo = (tattooId) => axios.delete(`${baseUrl}/tums/${tattooId}.json`);
 
-const updateTattooInfo = (tattooId, updatedTattooInfo) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/tums/${tattooId}.json`)
-    .then((response) => {
-      const tattooObject = { ...response.data };
-      tattooObject.imgUrl = updatedTattooInfo.imgUrl;
-      tattooObject.uid = updatedTattooInfo.uid;
-      tattooObject.font = updatedTattooInfo.font;
-      // eslint-disable-next-line prefer-destructuring
-      tattooObject.half1 = updatedTattooInfo.word[0];
-      // eslint-disable-next-line prefer-destructuring
-      tattooObject.half2 = updatedTattooInfo.word[1];
-      tattooObject.word = `${updatedTattooInfo.word[0]}o${updatedTattooInfo.word[1]}`;
-      updateTattoo(tattooId, tattooObject)
-        .then(() => {
-          resolve();
-        });
-    })
-    .catch((errorFromUpdateTattoo) => reject(errorFromUpdateTattoo));
-});
+// const updateTattooInfo = (tattooId, updatedTattooInfo) => new Promise((resolve, reject) => {
+//   axios.get(`${baseUrl}/tums/${tattooId}.json`)
+//     .then((response) => {
+//       const tattooObject = { ...response.data };
+//       tattooObject.imgUrl = updatedTattooInfo.imgUrl;
+//       tattooObject.font = updatedTattooInfo.font;
+//       updateTattoo(tattooId, tattooObject)
+//         .then(() => {
+//           resolve();
+//         });
+//     })
+//     .catch((errorFromUpdateTattoo) => reject(errorFromUpdateTattoo));
+// });
+
+const getTattooIdEvent = (e) => {
+  const tattooCardId = e.target.id;
+  console.log(tattooCardId);
+};
 
 
 export default {
   getSavedTattoosByUid,
   getUid,
   saveNewTattoo,
-  updateTattooInfo,
+  // updateTattooInfo,
+  updateTattoo,
   deleteTattoo,
+  getTattooIdEvent,
 };
+
+// getSavedTattoosByUid gets called in Saved.js
+// getUid gets called in Word.js
+// saveNewTattooo gets called in Word.js
+// updateTattoo gets called in tattooCard.js
+// deleteTattoo gets called in Saved.js

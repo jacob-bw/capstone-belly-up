@@ -25,20 +25,13 @@ class Saved extends React.Component {
       .catch((err) => console.error('error from delete tattoo', err));
   }
 
-  updateCard = (e) => {
-    // just needs to update the text or img
-    e.preventDefault();
-    const updatedTattooObj = {
-      imgUrl: this.state.tum,
-      uid: savedData.getUid(),
-      font: this.state.font,
-      half1: this.state.word[0],
-      half2: this.state.word[1],
-      word: `${this.state.word[0]}o${this.state.word[1]}`,
-    };
-    savedData.updateTattoo(updatedTattooObj)
-      .then(() => console.log('tattoo added to archive', updatedTattooObj.word))
-      .catch((err) => console.error('err from saveCard', err));
+  updateTattoo = (tattooId, noRegerts) => {
+    savedData.updateTattoo(tattooId, noRegerts)
+      .then(() => {
+        this.getTattoos();
+        console.log('successfully updated tattoo');
+      })
+      .catch((error) => console.error('error from update tattoo', error));
   }
 
   componentDidMount() {
@@ -50,7 +43,7 @@ class Saved extends React.Component {
       <div className="flashBook">
       <h1>Saved Tattoos</h1>
       <div className="tattoos d-flex flex-wrap">
-        { this.state.tattoos.map((tattoo) => <TattooCard key={tattoo.id} tattoo={tattoo} deleteTattoo={this.deleteTattoo}/>) }
+        { this.state.tattoos.map((tattoo) => <TattooCard key={tattoo.id} tattoo={tattoo} deleteTattoo={this.deleteTattoo} updateTattoo={this.updateTattoo}/>) }
       </div>
       </div>
     );
