@@ -2,8 +2,11 @@
 
 nav {
   font-family: $font1;
+
   .nav-link {
     font-size: 2rem;
+    display: inline-block;
+    justify-content: center;
   }
   #logoutBtn {
     color: $ink;

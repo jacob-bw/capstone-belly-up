@@ -23,10 +23,12 @@ margin: 10px;
         color: $ink;
         text-transform: uppercase;
         font-weight: 750;
-        max-width: 45%;
+        max-width: fit-content;
+        flex-shrink: 1;
       }
       .font1 {
         font-family: $font1;
+        font-weight: bold;
       }
       .font2 {
         font-family: $font2;
@@ -34,6 +36,7 @@ margin: 10px;
       .font3 {
         font-family: $font3;
         color: #141f1f;
+        font-weight: bold;
         }
       #halfOne {
         position: absolute;

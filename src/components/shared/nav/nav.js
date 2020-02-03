@@ -3,10 +3,10 @@ import {
   Nav,
   NavbarBrand,
   NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
+  // UncontrolledDropdown,
+  // DropdownToggle,
+  // DropdownMenu,
+  // DropdownItem,
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -43,7 +43,7 @@ class MyNav extends React.Component {
     const buildNavbar = () => {
       if (authed) {
         return (
-          <div className="navbar-nav ml-auto">
+          <div className="navbar-nav">
             <Nav pills>
               {/* <UncontrolledDropdown >
                 <DropdownToggle id="bellyMenu" nav caret>
@@ -56,7 +56,7 @@ class MyNav extends React.Component {
                 </DropdownMenu>
               </UncontrolledDropdown> */}
               <NavItem>
-                <Link className="nav-link" to="/saved"><FontAwesomeIcon id="saveBtn" icon={faBook}/></Link>
+                <Link className="nav-link" to="/saved" alt="saved"><FontAwesomeIcon id="saveBtn" icon={faBook}/></Link>
               </NavItem>
               <NavItem>
                 {
@@ -68,13 +68,13 @@ class MyNav extends React.Component {
         );
       }
 
-      return (<ul className="navbar-nav ml-auto"></ul>);
+      return (<ul className="navbar-nav"></ul>);
     };
 
     return (
       <div className="MyNavbar">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <NavbarBrand href="/home" className="mr-auto">Belly Up</NavbarBrand>
+          <NavbarBrand href="/home" className="">Belly Up</NavbarBrand>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
