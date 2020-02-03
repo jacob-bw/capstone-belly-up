@@ -17,15 +17,18 @@ margin: 10px;
         z-index: 0;
         border-radius: 0px;
       }
+
       .tattooScript {
         z-index: 1;
         color: $ink;
         text-transform: uppercase;
         font-weight: 750;
-        max-width: 45%;
+        max-width: fit-content;
+        flex-shrink: 1;
       }
       .font1 {
         font-family: $font1;
+        font-weight: bold;
       }
       .font2 {
         font-family: $font2;
@@ -33,6 +36,7 @@ margin: 10px;
       .font3 {
         font-family: $font3;
         color: #141f1f;
+        font-weight: bold;
         }
       #halfOne {
         position: absolute;
@@ -74,6 +78,9 @@ margin: 10px;
             font-size: 1.3rem;
             text-transform: uppercase;
             font-weight: 750;
+          }
+          img {
+            max-width: 200px;
           }
         }
         .btn-dark {

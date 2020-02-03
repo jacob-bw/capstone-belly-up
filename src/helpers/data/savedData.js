@@ -27,14 +27,42 @@ const getSavedTattoosByUid = (uid) => new Promise((resolve, reject) => {
 
 const saveNewTattoo = (freshInk) => axios.post(`${baseUrl}/tums/.json`, freshInk);
 
-const updateTattoo = (noRegerts, tattooId) => axios.put(`${baseUrl}/tums/${tattooId}.json`, noRegerts);
+const updateTattoo = (tattooId, noRegerts) => axios.put(`${baseUrl}/tums/${tattooId}.json`, noRegerts);
 
-const deleteTattoo = (tattooId) => axios.delete(`${baseUrl}/tums/${tattooId}`);
+const deleteTattoo = (tattooId) => axios.delete(`${baseUrl}/tums/${tattooId}.json`);
+
+// const updateTattooInfo = (tattooId, updatedTattooInfo) => new Promise((resolve, reject) => {
+//   axios.get(`${baseUrl}/tums/${tattooId}.json`)
+//     .then((response) => {
+//       const tattooObject = { ...response.data };
+//       tattooObject.imgUrl = updatedTattooInfo.imgUrl;
+//       tattooObject.font = updatedTattooInfo.font;
+//       updateTattoo(tattooId, tattooObject)
+//         .then(() => {
+//           resolve();
+//         });
+//     })
+//     .catch((errorFromUpdateTattoo) => reject(errorFromUpdateTattoo));
+// });
+
+const getTattooIdEvent = (e) => {
+  const tattooCardId = e.target.id;
+  console.log(tattooCardId);
+};
+
 
 export default {
   getSavedTattoosByUid,
   getUid,
   saveNewTattoo,
+  // updateTattooInfo,
   updateTattoo,
   deleteTattoo,
+  getTattooIdEvent,
 };
+
+// getSavedTattoosByUid gets called in Saved.js
+// getUid gets called in Word.js
+// saveNewTattooo gets called in Word.js
+// updateTattoo gets called in tattooCard.js
+// deleteTattoo gets called in Saved.js
