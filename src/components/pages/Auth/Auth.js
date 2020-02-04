@@ -4,8 +4,6 @@ import 'firebase/auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons';
 
-import './Auth.scss';
-
 class Auth extends React.Component {
   loginClickEvent = (e) => {
     e.preventDefault();

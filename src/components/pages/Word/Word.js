@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+import { withRouter } from 'react-router-dom';
 import './Word.scss';
 
 
@@ -16,9 +17,9 @@ class TattooWord extends React.Component {
     word: [],
     font: 'font1',
     tum: 'https://i.imgur.com/tUVzOw5.jpg',
+    half1: '',
+    half2: '',
   }
-
-  // bellyImg = ['https://i.imgur.com/tUVzOw5.jpg', 'https://i.imgur.com/dYVeIRv.jpg', 'https://i.imgur.com/Fw8ul6U.jpg'];
 
   splitWord = () => {
     randomWord.getRandomWord()
@@ -36,10 +37,10 @@ class TattooWord extends React.Component {
           }
           const lowestIndex = oIndexArray.indexOf(Math.min(...oIndexArray));
           const bellyScript = [response.substring(0, newArr[lowestIndex]), response.substring(newArr[lowestIndex] + 1)];
-          this.setState({ word: bellyScript });
+          this.setState({ half1: bellyScript[0], half2: bellyScript[1], word: response });
         } else {
           const bellyScript = response.split('o');
-          this.setState({ word: bellyScript });
+          this.setState({ half1: bellyScript[0], half2: bellyScript[1], word: response });
         }
       })
       .catch((err) => console.error('error from splitWord', err));
@@ -50,19 +51,16 @@ class TattooWord extends React.Component {
     this.setState({ font: newFont });
   }
 
-  // tumPicker = (e) => {
-  //   const newTumVar = e.target.id;
-  //   if (newTumVar === 'belly1') {
-  //     // this.setState({ tum: 'https://i.imgur.com/tUVzOw5.jpg' });
-  //     console.log('newTumVar is belly1');
-  //   } else if (newTumVar === 'belly2') {
-  //     // this.setState({ tum: 'https://i.imgur.com/dYVeIRv.jpg' });
-  //     console.log('newTumVar is belly2');
-  //   } else if (newTumVar === 'belly3') {
-  //     // this.setState({ tum: 'https://i.imgur.com/Fw8ul6U.jpg' });
-  //     console.log('newTumVar is belly3');
-  //   }
-  // }
+  tumPicker = (e) => {
+    const newTumVar = e.target.id;
+    if (newTumVar === 'belly1') {
+      this.setState({ tum: 'https://i.imgur.com/tUVzOw5.jpg' });
+    } else if (newTumVar === 'belly2') {
+      this.setState({ tum: 'https://i.imgur.com/dYVeIRv.jpg' });
+    } else if (newTumVar === 'belly3') {
+      this.setState({ tum: 'https://i.imgur.com/Fw8ul6U.jpg' });
+    }
+  }
 
   saveCard = (e) => {
     e.preventDefault();
@@ -70,26 +68,58 @@ class TattooWord extends React.Component {
       imgUrl: this.state.tum,
       uid: savedData.getUid(),
       font: this.state.font,
-      half1: this.state.word[0],
-      half2: this.state.word[1],
-      word: `${this.state.word[0]}o${this.state.word[1]}`,
+      half1: this.state.half1,
+      half2: this.state.half2,
+      word: this.state.word,
     };
     savedData.saveNewTattoo(newTattooObj)
-      .then(() => console.log('tattoo', newTattooObj.word, ' added to archive'))
+      .then(() => this.props.history.push('/saved'))
       .catch((err) => console.error('err from saveCard', err));
   }
 
+  editCard = (e) => {
+    e.preventDefault();
+    const { tattooId } = this.props.match.params;
+    const newTattooObj = {
+      imgUrl: this.state.tum,
+      uid: savedData.getUid(),
+      font: this.state.font,
+      half1: this.state.half1,
+      half2: this.state.half2,
+      word: this.state.word,
+    };
+    savedData.updateTattoo(tattooId, newTattooObj)
+      .then(() => this.props.history.push('/saved'))
+      .catch((err) => console.error('err from editCard', err));
+  }
+
+  getTattooParams = () => {
+    console.log('got tattoo params running');
+    const { tattooId } = this.props.match.params;
+    savedData.getSingleTattooById(tattooId)
+      .then((response) => {
+        this.setState({
+          word: response.data.word,
+          tum: response.data.imgUrl,
+          font: response.data.font,
+          half1: response.data.half1,
+          half2: response.data.half2,
+        });
+      })
+      .catch((err) => console.error('error in getTattooParams', err));
+  }
+
   componentDidMount() {
-    this.splitWord();
+    this.props.match.params.tattooId ? this.getTattooParams() : this.splitWord();
   }
 
   render() {
+    const { tattooId } = this.state;
     const { authed } = this.props;
-    const bellyWord = this.state.word;
     const pickedFont = this.state.font;
     const pickedTum = this.state.tum;
-    const halfOne = bellyWord[0];
-    const halfTwo = bellyWord[1];
+    const halfOne = this.state.half1;
+    const halfTwo = this.state.half2;
     return (
       <div className='wordCard'>
         <div className='card col-md-6'>
@@ -100,16 +130,16 @@ class TattooWord extends React.Component {
           </div>
         <div className='card-footer'>
           <div className='buttonHolder'>
-            {/* <UncontrolledDropdown>
+            <UncontrolledDropdown>
               <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu3' nav caret>
                 New Belly
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem className='dropdown-item belly1' type='button' id='belly1' onClick={this.tumPicker}><img src="https://i.imgur.com/tUVzOw5.jpg" alt=" "></img></DropdownItem>
-                <DropdownItem className='dropdown-item belly2' type='button' id='belly2' onClick={this.tumPicker}><img src="https://i.imgur.com/dYVeIRv.jpg" alt=" "></img></DropdownItem>
-                <DropdownItem className='dropdown-item belly3' type='button' id='belly3' onClick={this.tumPicker}><img src="https://i.imgur.com/Fw8ul6U.jpg" alt=" "></img></DropdownItem>
+                <DropdownItem className='dropdown-item belly1' type='button' id='belly1'onClick={this.tumPicker}><img src="https://i.imgur.com/tUVzOw5.jpg" alt=" "></img></DropdownItem>
+                <DropdownItem className='dropdown-item belly2' type='button' id='belly2'onClick={this.tumPicker}><img src="https://i.imgur.com/dYVeIRv.jpg" alt=" "></img></DropdownItem>
+                <DropdownItem className='dropdown-item belly3' type='button' id='belly3'onClick={this.tumPicker}><img src="https://i.imgur.com/Fw8ul6U.jpg" alt=" "></img></DropdownItem>
               </DropdownMenu>
-            </UncontrolledDropdown> */}
+            </UncontrolledDropdown>
             <UncontrolledDropdown >
               <DropdownToggle className='btn btn-dark dropdown-toggle card-btn align-middle' id='dropdownMenu2' nav caret>
                 New Font
@@ -121,10 +151,13 @@ class TattooWord extends React.Component {
               </DropdownMenu>
             </UncontrolledDropdown>
             {
-            (authed) && <button className='btn btn-dark card-btn' id='saveTattoo' onClick={this.saveCard}>Save</button>
+            (authed) && (!tattooId) && <button className='btn btn-dark card-btn' id='saveTattoo' onClick={this.saveCard}>Save</button>
             }
-            <button className='btn btn-dark card-btn' id='tryAgain' onClick={this.splitWord}>Get Inked</button>
-          </div>
+            { !this.props.match.params.tattooId
+              ? <button className='btn btn-dark card-btn' id='tryAgain' onClick={this.splitWord}>Get Inked</button>
+              : <button className='btn btn-dark card-btn' id='tryAgain' onClick={this.editCard}>Update</button>
+            }
+            </div>
         </div>
       </div>
       </div>
@@ -132,4 +165,4 @@ class TattooWord extends React.Component {
   }
 }
 
-export default TattooWord;
+export default withRouter(TattooWord);
