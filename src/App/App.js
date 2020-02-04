@@ -57,6 +57,7 @@ class App extends React.Component {
             <PublicRoute path="/home" exact component={Auth} authed={authed}/>
             <TattooWord path="/" exact component={TattooWord} authed={authed}/>
             <PrivateRoute path="/saved" exact component={Saved} authed={authed}/>
+            <PrivateRoute path="/:tattooId/editMode" exact component={TattooWord} authed={authed}/>
           </Switch>
         </Router>
       </div>
