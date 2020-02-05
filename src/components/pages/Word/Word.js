@@ -94,7 +94,6 @@ class TattooWord extends React.Component {
   }
 
   getTattooParams = () => {
-    console.log('got tattoo params running');
     const { tattooId } = this.props.match.params;
     savedData.getSingleTattooById(tattooId)
       .then((response) => {

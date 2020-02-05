@@ -43,3 +43,34 @@
 .btn-warning {
   background-color: $bargle;
 }
+
+nav {
+  font-family: $font1;
+  .navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center !important;
+    padding: .5rem 1rem;
+  }
+  li {
+    list-style: none;
+  }
+  .nav-link {
+    font-size: 2rem;
+    display: inline-block;
+    justify-content: center;
+  }
+  #logoutBtn {
+    color: $ink;
+  }
+  #saveBtn {
+    color: $ink;
+  }
+  .navbar-brand {
+    color: $ink;
+    font-family: $font1;
+    font-size: 2rem;
+  }
+}

@@ -7,7 +7,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: center !important;
     padding: .5rem 1rem;
   }
   li {
@@ -29,23 +29,4 @@ nav {
     font-family: $font1;
     font-size: 2rem;
   }
-  // .dropdown {
-  //   padding-top: 8px;
-  //   #bellyMenu {
-  //     color: $ink;
-  //     background-color: transparent;
-  //     font-size: 1rem;
-  //   }
-    // .dropdown-menu {
-    //   max-width: 150px;
-    //   justify-content: center;
-    //   .bellyImg.dropdown-item {
-    //     max-width: 150px;
-    //     justify-content: center;
-    //     img {
-    //       max-width: 140px;
-    //     } 
-    //   }
-    // }
-  // }
 }

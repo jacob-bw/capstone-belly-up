@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Nav,
-  NavbarBrand,
-  NavItem,
-} from 'reactstrap';
+import { Nav, NavItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
@@ -60,9 +56,9 @@ class MyNav extends React.Component {
               <FontAwesomeIcon id='saveBtn' icon={faBook} />
             </Link>
           </NavItem>
-          <NavbarBrand href='/home' className=''>
+          <Link to='/' className='navbar-brand'>
             Belly Up
-          </NavbarBrand>
+          </Link>
           <div className='' id='navbarSupportedContent'>
             {buildNavbar()}
           </div>
