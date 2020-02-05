@@ -49,9 +49,3 @@ export default {
   deleteTattoo,
   getSingleTattooById,
 };
-
-// getSavedTattoosByUid gets called in Saved.js
-// getUid gets called in Word.js
-// saveNewTattooo gets called in Word.js
-// updateTattoo gets called in tattooCard.js
-// deleteTattoo gets called in Saved.js

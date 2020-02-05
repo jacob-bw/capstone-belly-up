@@ -18,12 +18,6 @@ class TattooCard extends React.Component {
     deleteTattoo(tattoo.id);
   }
 
-  // updateTattooEvent = (e) => {
-  //   e.preventDefault();
-  //   const { updateTattoo, tattoo } = this.props;
-  //   updateTattoo(tattoo.id);
-  // }
-
   render() {
     const { tattoo } = this.props;
     return (
